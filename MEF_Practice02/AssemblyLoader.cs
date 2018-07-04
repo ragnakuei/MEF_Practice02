@@ -1,6 +1,5 @@
 ﻿using System.Composition.Hosting;
 using System.IO;
-using System.Linq;
 using System.Reflection;
 using System.Runtime.Loader;
 
@@ -12,10 +11,14 @@ namespace MEF_Practice02
 
         public AssemblyLoader(string fileName)
         {
+            fileName = string.IsNullOrWhiteSpace(fileName)
+                           ? "NullLogic"
+                           : fileName;
+
             var executableLocation = Assembly.GetEntryAssembly().Location;
             var path               = Path.Combine(Path.GetDirectoryName(executableLocation), "Plugins");
 
-            var assembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(path + fileName + ".dll");
+            var assembly = AssemblyLoadContext.Default.LoadFromAssemblyPath($"{path}/{fileName}.dll");
             _container = new ContainerConfiguration().WithAssembly(assembly);
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using ILogic;
 using MEF_Practice02.EF;
 
 namespace MEF_Practice02
@@ -17,7 +18,9 @@ namespace MEF_Practice02
                                      ?.FirstOrDefault(t => t.TypeId == typeId)
                                      ?.FileName;
 
-            
+            var calculatorLogic = new AssemblyLoader(fileName).Get<ICalculatorLogic>();
+            var result = calculatorLogic.Add(1, 2);
+            Console.WriteLine(result);
         }
     }
 }

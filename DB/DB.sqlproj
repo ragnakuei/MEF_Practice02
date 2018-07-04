@@ -58,4 +58,16 @@
   <ItemGroup>
     <Folder Include="Properties" />
   </ItemGroup>
+  <ItemGroup>
+    <Build Include="TypeAssemblyFile.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="DB.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DB.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="InsertTypeAssemblyFile.sql" />
+  </ItemGroup>
 </Project>
